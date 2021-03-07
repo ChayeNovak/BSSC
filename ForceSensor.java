@@ -8,8 +8,7 @@
 import com.phidget22.*;
 
 public class ForceSensor {
-    
-	static boolean phidget = false;
+        
     public static VoltageRatioInputSensorChangeListener onForceSensorInput0_SensorChange =
 	new VoltageRatioInputSensorChangeListener() {
 	@Override
@@ -23,8 +22,6 @@ public class ForceSensor {
 	@Override
 	public void onAttach(AttachEvent e) {
             System.out.println("Phidget Attached!\n");
-            phidget = true;
-            
 	}
     };
         
@@ -33,36 +30,41 @@ public class ForceSensor {
 	@Override
 	public void onDetach(DetachEvent e) {
             System.out.println("Phidget Detached!\n");
-            phidget = false;
 	}
     };
        
     public static void main(String[] args) throws Exception {
-        //Create Phidget channels
         VoltageRatioInput ForceSensorInput0 = new VoltageRatioInput();
-        
+        DigitalOutput greenLED = new DigitalOutput();
+        //DigitalOutput redLED = new DigitalOutput();
+        //greenLED.setIsHubPortDevice(true);
+        //greenLED.setHubPort(0);
+        //ForceSensorInput0.setDeviceSerialNumber(30701);
         ForceSensorInput0.setChannel(0);
-
-        //Assign event handlers need before calling open so that no events are missed.
+        
         ForceSensorInput0.addSensorChangeListener(onForceSensorInput0_SensorChange);
         ForceSensorInput0.addAttachListener(onForceSensorInput0_Attach);
         ForceSensorInput0.addDetachListener(onForceSensorInput0_Detach);
-
-        //Open Phidgets and wait for attachment
-        ForceSensorInput0.open(5000);
-       
-        //Do stuff with Phidget
-        //Set the sensor type to match Force Sensor after opening the Phidget
-        ForceSensorInput0.setSensorType(VoltageRatioSensorType.VOLTAGE_RATIO); // Force Sensor
         
+        
+        ForceSensorInput0.open(5000);
+        greenLED.open(1000);
+        ForceSensorInput0.setSensorType(VoltageRatioSensorType.VOLTAGE_RATIO);
+
         while (ForceSensorInput0.getAttached() == true) {
             System.out.println(ForceSensorInput0.getSensorValue());
+            double tem = ForceSensorInput0.getSensorValue();
+             if (tem > 0.2){
+               System.out.println("boi");
+               greenLED.setDutyCycle(1);
+               //greenLED.setState(true);
+            }
+             else{
+               greenLED.setDutyCycle(0);
+             }
         }
-       
-        //Wait until Enter has been pressed before exiting
-        System.in.read();
-
-        //Close your Phidgets once the program is done.
         ForceSensorInput0.close();
+        greenLED.close();
+        System.in.read();
     }
 }
