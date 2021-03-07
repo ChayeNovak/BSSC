@@ -8,7 +8,8 @@
 import com.phidget22.*;
 
 public class ForceSensor {
-        
+    
+	static boolean phidget = false;
     public static VoltageRatioInputSensorChangeListener onForceSensorInput0_SensorChange =
 	new VoltageRatioInputSensorChangeListener() {
 	@Override
@@ -22,6 +23,8 @@ public class ForceSensor {
 	@Override
 	public void onAttach(AttachEvent e) {
             System.out.println("Phidget Attached!\n");
+            phidget = true;
+            
 	}
     };
         
@@ -30,15 +33,14 @@ public class ForceSensor {
 	@Override
 	public void onDetach(DetachEvent e) {
             System.out.println("Phidget Detached!\n");
+            phidget = false;
 	}
     };
        
     public static void main(String[] args) throws Exception {
         //Create Phidget channels
         VoltageRatioInput ForceSensorInput0 = new VoltageRatioInput();
-
-       //Set addressing parameters to specify which channel to open
-        ForceSensorInput0.setDeviceSerialNumber(30701);
+        
         ForceSensorInput0.setChannel(0);
 
         //Assign event handlers need before calling open so that no events are missed.
@@ -48,12 +50,15 @@ public class ForceSensor {
 
         //Open Phidgets and wait for attachment
         ForceSensorInput0.open(5000);
-
+       
         //Do stuff with Phidget
         //Set the sensor type to match Force Sensor after opening the Phidget
-        ForceSensorInput0.setSensorType(VoltageRatioSensorType.PN_1106); // Force Sensor
-
-
+        ForceSensorInput0.setSensorType(VoltageRatioSensorType.VOLTAGE_RATIO); // Force Sensor
+        
+        while (ForceSensorInput0.getAttached() == true) {
+            System.out.println(ForceSensorInput0.getSensorValue());
+        }
+       
         //Wait until Enter has been pressed before exiting
         System.in.read();
 
