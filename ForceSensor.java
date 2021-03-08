@@ -1,9 +1,14 @@
 /**
  * ForceSensor.java
  * A simple program for reading values from a Phidget force sensor and integrating it with a speaker
- * Group 4
+ * Group 4: Chaye, Moritz, Hei, Liu, Saad
  * @Author Chaye Novak - 902037
- * 
+ * Contributions: 
+ * Chaye (Main focus: software, assisted with hardware + setting up of group software environments and github integration) + co-project management + coursework proposal writeup + assist with demo proposal
+ * Moritz (Main focus: hardware, project diagrams) + co-project management + demo 1 proposal write up + demo speech write up
+ * Hei (Main focus: hardware + assisted with software) + physical demonstration + 
+ * Liu (idea contributions for project proposal + demo)
+ * Saad (idea contributions for project demo)
  */
 
 import com.phidget22.*;
@@ -57,13 +62,24 @@ public class ForceSensor {
         while (ForceSensorInput0.getAttached() == true) {
             System.out.println(ForceSensorInput0.getSensorValue());
             double tem = ForceSensorInput0.getSensorValue();
-             if (tem > 0.2){
-               System.out.println("boi");
-               greenLED.setDutyCycle(1);
+            if (tem > 0.5){
+                   greenLED.setState(true);
+                   Thread.currentThread().sleep(1);
+                   greenLED.setState(false);
+                   Thread.currentThread().sleep(1);
                //greenLED.setState(true);
             }
-             else{
-               greenLED.setDutyCycle(0);
+            if (tem > 0.1&& tem<0.49){
+                    greenLED.setState(true);
+                    Thread.currentThread().sleep(25);
+                    greenLED.setState(false);
+                    Thread.currentThread().sleep(25);
+             }
+            if (tem == 0 ){
+                    greenLED.setState(true);
+                    Thread.currentThread().sleep(100);
+                    greenLED.setState(false);
+                    Thread.currentThread().sleep(100);
              }
         }
         
