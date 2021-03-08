@@ -33,6 +33,38 @@ public class ForceSensor {
             System.out.println("Phidget Detached!\n");
 	}
     };
+    
+    public static SoundSensorSPLChangeListener onSoundSensor0_SPLChange =
+    		new SoundSensorSPLChangeListener() {
+    		@Override
+    		public void onSPLChange(SoundSensorSPLChangeEvent e) {
+    			System.out.println("DB: " + e.getDB());
+    			System.out.println("DBA: " + e.getDBA());
+    			System.out.println("DBC: " + e.getDBC());
+    			System.out.println("Octaves: \t"+ e.getOctaves()[0]+ "  |  "+ e.getOctaves()[1]+ "  |  "+ e.getOctaves()[2]);
+    			System.out.println("\t\t"+ e.getOctaves()[3]+ "  |  "+ e.getOctaves()[4]+ "  |  "+ e.getOctaves()[5]);
+    			System.out.println("\t\t"+ e.getOctaves()[6]+ "  |  "+ e.getOctaves()[7]+ "  |  "+ e.getOctaves()[8]);
+    			System.out.println("\t\t"+ e.getOctaves()[9]);
+    			System.out.println("----------");
+    		}
+    	};
+
+    	public static AttachListener onSoundSensor0_Attach =
+    		new AttachListener() {
+    		@Override
+    		public void onAttach(AttachEvent e) {
+    			System.out.println("Attach!");
+    		}
+    	};
+
+    	public static DetachListener onSoundSensor0_Detach =
+    		new DetachListener() {
+    		@Override
+    		public void onDetach(DetachEvent e) {
+    			System.out.println("Detach!");
+    		}
+    	};
+
        
     public static void main(String[] args) throws Exception {
         VoltageRatioInput ForceSensorInput0 = new VoltageRatioInput();
@@ -44,26 +76,14 @@ public class ForceSensor {
         //ForceSensorInput0.setDeviceSerialNumber(30701);
         ForceSensorInput0.setChannel(0);
         
-		soundSensor0.addSPLChangeListener(new SoundSensorSPLChangeListener() {
-			public void onSPLChange(SoundSensorSPLChangeEvent e) {
-				System.out.println("DB: " + e.getDB());
-				System.out.println("DBA: " + e.getDBA());
-				System.out.println("DBC: " + e.getDBC());
-				System.out.println("Octaves: \t"+ e.getOctaves()[0]+ "  |  "+ e.getOctaves()[1]+ "  |  "+ e.getOctaves()[2]);
-				System.out.println("\t\t"+ e.getOctaves()[3]+ "  |  "+ e.getOctaves()[4]+ "  |  "+ e.getOctaves()[5]);
-				System.out.println("\t\t"+ e.getOctaves()[6]+ "  |  "+ e.getOctaves()[7]+ "  |  "+ e.getOctaves()[8]);
-				System.out.println("\t\t"+ e.getOctaves()[9]);
-				System.out.println("----------");
-			}
-		});
-
-	
-
-        
+        // Force Sensor
         ForceSensorInput0.addSensorChangeListener(onForceSensorInput0_SensorChange);
         ForceSensorInput0.addAttachListener(onForceSensorInput0_Attach);
         ForceSensorInput0.addDetachListener(onForceSensorInput0_Detach);
-        soundSensor0.addSPLChangeListener(null);
+        // Sound Sensor
+      	soundSensor0.addSPLChangeListener(onSoundSensor0_SPLChange);
+      	soundSensor0.addAttachListener(onSoundSensor0_Attach);
+      	soundSensor0.addDetachListener(onSoundSensor0_Detach);
         
     	
         ForceSensorInput0.open(5000);
@@ -83,6 +103,7 @@ public class ForceSensor {
                greenLED.setDutyCycle(0);
              }
         }
+        
         ForceSensorInput0.close();
         greenLED.close();
         soundSensor0.close();
