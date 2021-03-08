@@ -34,42 +34,11 @@ public class ForceSensor {
 	}
     };
     
-    public static SoundSensorSPLChangeListener onSoundSensor0_SPLChange =
-    		new SoundSensorSPLChangeListener() {
-    		@Override
-    		public void onSPLChange(SoundSensorSPLChangeEvent e) {
-    			System.out.println("DB: " + e.getDB());
-    			System.out.println("DBA: " + e.getDBA());
-    			System.out.println("DBC: " + e.getDBC());
-    			System.out.println("Octaves: \t"+ e.getOctaves()[0]+ "  |  "+ e.getOctaves()[1]+ "  |  "+ e.getOctaves()[2]);
-    			System.out.println("\t\t"+ e.getOctaves()[3]+ "  |  "+ e.getOctaves()[4]+ "  |  "+ e.getOctaves()[5]);
-    			System.out.println("\t\t"+ e.getOctaves()[6]+ "  |  "+ e.getOctaves()[7]+ "  |  "+ e.getOctaves()[8]);
-    			System.out.println("\t\t"+ e.getOctaves()[9]);
-    			System.out.println("----------");
-    		}
-    	};
-
-    	public static AttachListener onSoundSensor0_Attach =
-    		new AttachListener() {
-    		@Override
-    		public void onAttach(AttachEvent e) {
-    			System.out.println("Attach!");
-    		}
-    	};
-
-    	public static DetachListener onSoundSensor0_Detach =
-    		new DetachListener() {
-    		@Override
-    		public void onDetach(DetachEvent e) {
-    			System.out.println("Detach!");
-    		}
-    	};
-
        
     public static void main(String[] args) throws Exception {
         VoltageRatioInput ForceSensorInput0 = new VoltageRatioInput();
         DigitalOutput greenLED = new DigitalOutput();
-        SoundSensor soundSensor0 = new SoundSensor();
+        
         //DigitalOutput redLED = new DigitalOutput();
         //greenLED.setIsHubPortDevice(true);
         //greenLED.setHubPort(0);
@@ -80,15 +49,9 @@ public class ForceSensor {
         ForceSensorInput0.addSensorChangeListener(onForceSensorInput0_SensorChange);
         ForceSensorInput0.addAttachListener(onForceSensorInput0_Attach);
         ForceSensorInput0.addDetachListener(onForceSensorInput0_Detach);
-        // Sound Sensor
-      	soundSensor0.addSPLChangeListener(onSoundSensor0_SPLChange);
-      	soundSensor0.addAttachListener(onSoundSensor0_Attach);
-      	soundSensor0.addDetachListener(onSoundSensor0_Detach);
-        
-    	
+     
         ForceSensorInput0.open(5000);
         greenLED.open(1000);
-        soundSensor0.open(2000);
         ForceSensorInput0.setSensorType(VoltageRatioSensorType.VOLTAGE_RATIO);
 
         while (ForceSensorInput0.getAttached() == true) {
@@ -106,7 +69,6 @@ public class ForceSensor {
         
         ForceSensorInput0.close();
         greenLED.close();
-        soundSensor0.close();
         System.in.read();
     }
 }
