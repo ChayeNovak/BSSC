@@ -1,8 +1,9 @@
-/*
+/**
  * ForceSensor.java
  * A simple program for reading values from a Phidget force sensor and integrating it with a speaker
  * Group 4
  * @Author Chaye Novak - 902037
+ * 
  */
 
 import com.phidget22.*;
@@ -36,19 +37,38 @@ public class ForceSensor {
     public static void main(String[] args) throws Exception {
         VoltageRatioInput ForceSensorInput0 = new VoltageRatioInput();
         DigitalOutput greenLED = new DigitalOutput();
+        SoundSensor soundSensor0 = new SoundSensor();
         //DigitalOutput redLED = new DigitalOutput();
         //greenLED.setIsHubPortDevice(true);
         //greenLED.setHubPort(0);
         //ForceSensorInput0.setDeviceSerialNumber(30701);
         ForceSensorInput0.setChannel(0);
         
+		soundSensor0.addSPLChangeListener(new SoundSensorSPLChangeListener() {
+			public void onSPLChange(SoundSensorSPLChangeEvent e) {
+				System.out.println("DB: " + e.getDB());
+				System.out.println("DBA: " + e.getDBA());
+				System.out.println("DBC: " + e.getDBC());
+				System.out.println("Octaves: \t"+ e.getOctaves()[0]+ "  |  "+ e.getOctaves()[1]+ "  |  "+ e.getOctaves()[2]);
+				System.out.println("\t\t"+ e.getOctaves()[3]+ "  |  "+ e.getOctaves()[4]+ "  |  "+ e.getOctaves()[5]);
+				System.out.println("\t\t"+ e.getOctaves()[6]+ "  |  "+ e.getOctaves()[7]+ "  |  "+ e.getOctaves()[8]);
+				System.out.println("\t\t"+ e.getOctaves()[9]);
+				System.out.println("----------");
+			}
+		});
+
+	
+
+        
         ForceSensorInput0.addSensorChangeListener(onForceSensorInput0_SensorChange);
         ForceSensorInput0.addAttachListener(onForceSensorInput0_Attach);
         ForceSensorInput0.addDetachListener(onForceSensorInput0_Detach);
+        soundSensor0.addSPLChangeListener(null);
         
-        
+    	
         ForceSensorInput0.open(5000);
         greenLED.open(1000);
+        soundSensor0.open(2000);
         ForceSensorInput0.setSensorType(VoltageRatioSensorType.VOLTAGE_RATIO);
 
         while (ForceSensorInput0.getAttached() == true) {
@@ -65,6 +85,7 @@ public class ForceSensor {
         }
         ForceSensorInput0.close();
         greenLED.close();
+        soundSensor0.close();
         System.in.read();
     }
 }
