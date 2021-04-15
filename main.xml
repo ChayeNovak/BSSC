@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent">
+<LinearLayout
+	android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+	<LinearLayout
+		android:id="@+id/channelInfo"
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:orientation="horizontal" >
+
+		<TextView
+			android:id="@+id/statusTitle"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="Status: "
+			android:textAppearance="?android:attr/textAppearanceMedium"
+			/>
+		<TextView
+			android:id="@+id/attachedTxt"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="Detached"
+			android:textAppearance="?android:attr/textAppearanceMedium"
+			/>
+	</LinearLayout>
+	<LinearLayout android:layout_height="wrap_content" android:id="@+id/linearLayout4" android:weightSum="1" android:layout_width="691dp">
+		<TextView
+			android:layout_width="wrap_content"
+			android:id="@+id/textView3"
+			android:layout_height="wrap_content"
+			android:textAppearance="?android:attr/textAppearanceMedium"
+			android:text="Name: "/>
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textAppearance="?android:attr/textAppearanceMedium"
+			android:text="@string/unknown_val" android:id="@+id/nameTxt"/>
+	</LinearLayout>
+	<LinearLayout android:layout_height="wrap_content" android:id="@+id/linearLayout6" android:layout_width="fill_parent">
+		<LinearLayout
+			xmlns:android="http://schemas.android.com/apk/res/android"
+			android:layout_width="0dp"
+			android:layout_weight="3"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal" >
+			<TextView
+				android:layout_height="wrap_content"
+				android:id="@+id/textView2"
+				android:text="Serial Number: "
+				android:textAppearance="?android:attr/textAppearanceMedium"
+				android:layout_width="wrap_content"/>
+			<TextView
+				android:layout_height="wrap_content"
+				android:id="@+id/serialTxt"
+				android:text="@string/unknown_val"
+				android:textAppearance="?android:attr/textAppearanceMedium"
+				android:layout_width="wrap_content"/>
+		</LinearLayout>
+		<LinearLayout
+			xmlns:android="http://schemas.android.com/apk/res/android"
+			android:layout_width="0dp"
+			android:layout_weight="2"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal" >
+			<TextView
+				android:layout_height="wrap_content"
+				android:id="@+id/textView4"
+				android:text="Version: "
+				android:textAppearance="?android:attr/textAppearanceMedium"
+				android:layout_width="wrap_content"/>
+			<TextView
+				android:layout_height="wrap_content"
+				android:id="@+id/versionTxt"
+				android:text="@string/unknown_val"
+				android:textAppearance="?android:attr/textAppearanceMedium"
+				android:layout_width="wrap_content"/>
+		</LinearLayout>
+	</LinearLayout>
+	<LinearLayout android:layout_height="wrap_content" android:id="@+id/linearLayout7" android:layout_width="fill_parent">
+		<LinearLayout
+			xmlns:android="http://schemas.android.com/apk/res/android"
+			android:layout_width="0dp"
+			android:layout_weight="3"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal" >
+			<TextView
+				android:layout_height="wrap_content"
+				android:id="@+id/textView6"
+				android:text="Channel: "
+				android:textAppearance="?android:attr/textAppearanceMedium"
+				android:layout_width="wrap_content"/>
+			<TextView android:layout_height="wrap_content"
+				android:id="@+id/channelTxt"
+				android:text="@string/unknown_val"
+				android:textAppearance="?android:attr/textAppearanceMedium"
+				android:layout_width="wrap_content"/>
+		</LinearLayout>
+		<LinearLayout
+			xmlns:android="http://schemas.android.com/apk/res/android"
+			android:layout_width="0dp"
+			android:layout_weight="2"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal" >
+			<TextView
+				android:layout_height="wrap_content"
+				android:id="@+id/textView7"
+				android:text="Hub Port: "
+				android:textAppearance="?android:attr/textAppearanceMedium"
+				android:layout_width="wrap_content"/>
+			<TextView
+				android:layout_height="wrap_content"
+				android:id="@+id/hubPortTxt"
+				android:text="@string/unknown_val"
+				android:textAppearance="?android:attr/textAppearanceMedium"
+				android:layout_width="wrap_content"/>
+		</LinearLayout>
+	</LinearLayout>
+	<LinearLayout
+		android:id="@+id/isHubPortSection"
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:orientation="horizontal" >
+		<TextView
+			android:id="@+id/isHubPortLabel"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="Is Hub Port: "
+			android:textAppearance="?android:attr/textAppearanceMedium"
+			/>
+		<CheckBox
+			android:id="@+id/isHubPortBox"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			/>
+	</LinearLayout>
+	<LinearLayout android:weightSum="1" android:id="@+id/linearLayout2" android:layout_width="597dp" android:layout_height="50dp">
+		<TextView
+			android:layout_width="wrap_content"
+			android:id="@+id/textView5"
+			android:textAppearance="?android:attr/textAppearanceMedium"
+			android:text="Label: "
+			android:layout_height="fill_parent"/>
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textAppearance="?android:attr/textAppearanceMedium"
+			android:text="@string/unknown_val"
+			android:id="@+id/labelTxt"/>
+	</LinearLayout>
+
+	<LinearLayout
+		android:id="@+id/settingsAndData"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:orientation="vertical" >
+
+		<LinearLayout
+			android:id="@+id/voltageRatioInfo"
+			xmlns:android="http://schemas.android.com/apk/res/android"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal" >
+
+			<TextView
+				android:id="@+id/voltageRatioTitle"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="Voltage Ratio: "
+				android:textAppearance="?android:attr/textAppearanceMedium"
+				/>
+
+			<TextView
+				android:id="@+id/voltageRatioTxt"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text=""
+				android:textAppearance="?android:attr/textAppearanceMedium"
+				/>
+			<TextView
+				android:id="@+id/voltageRatioUnits"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text=" V/V"
+				android:textAppearance="?android:attr/textAppearanceMedium"
+				/>
+		</LinearLayout>
+
+		<LinearLayout
+			android:id="@+id/sensorInfo"
+			xmlns:android="http://schemas.android.com/apk/res/android"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal" >
+
+			<TextView
+				android:id="@+id/sensorTitle"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="Sensor Value: "
+				android:textAppearance="?android:attr/textAppearanceMedium"
+				/>
+
+			<TextView
+				android:id="@+id/sensorValueTxt"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="  "
+				android:textAppearance="?android:attr/textAppearanceMedium"
+				/>
+			<TextView
+				android:id="@+id/sensorUnits"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text=""
+				android:textAppearance="?android:attr/textAppearanceMedium"
+				/>
+		</LinearLayout>
+		
+		<LinearLayout
+			android:id="@+id/dataIntervalSection"
+			xmlns:android="http://schemas.android.com/apk/res/android"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal" >
+
+			<TextView
+				android:id="@+id/dataIntervalLabel"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="Data Interval: "
+				android:textAppearance="?android:attr/textAppearanceMedium"
+				/>
+
+			<SeekBar
+				android:id="@+id/dataIntervalBar"
+				android:layout_weight="3.5"
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				android:max="4980"
+				/>
+			<TextView
+				android:id="@+id/dataIntervalTxt"
+				android:layout_weight="1"
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				android:text=""
+				android:textAppearance="?android:attr/textAppearanceMedium"
+				/>
+		</LinearLayout>
+
+		<LinearLayout
+			android:id="@+id/sensorTypeSection"
+			xmlns:android="http://schemas.android.com/apk/res/android"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal">
+			<TextView
+				android:id="@+id/sensorTypeLabel"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="Sensor Type: "
+				android:textAppearance="?android:attr/textAppearanceMedium"
+				/>
+			<Spinner
+				android:id="@+id/sensorTypeSpinner"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				/>
+		</LinearLayout>
+
+		<LinearLayout
+			android:id="@+id/bridgeSection"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:orientation="vertical">
+			<LinearLayout
+				android:id="@+id/bridgeGainSection"
+				xmlns:android="http://schemas.android.com/apk/res/android"
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:orientation="horizontal">
+				<TextView
+					android:id="@+id/bridgeGainLabel"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="Bridge Gain: "
+					android:textAppearance="?android:attr/textAppearanceMedium"
+					/>
+				<Spinner
+					android:id="@+id/bridgeGainSpinner"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					/>
+			</LinearLayout>
+
+			<LinearLayout
+				android:id="@+id/bridgeEnabledSection"
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:orientation="horizontal">
+
+				<TextView
+					android:id="@+id/bridgeEnabledLabel"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="Bridge Enabled: "
+					android:textAppearance="?android:attr/textAppearanceMedium" />
+
+				<CheckBox
+					android:id="@+id/bridgeEnabledBox"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content" />
+			</LinearLayout>
+		</LinearLayout>
+		<LinearLayout
+			android:id="@+id/gyroValue"
+			android:layout_width="fill_parent"
+			android:layout_height="36dp"
+			android:orientation="horizontal">
+
+			<TextView
+				android:id="@+id/xValue"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="Turning degree: "
+				android:textAppearance="?android:attr/textAppearanceMedium" />
+
+		</LinearLayout>
+	</LinearLayout>
+
+
+</LinearLayout>
+</ScrollView>
